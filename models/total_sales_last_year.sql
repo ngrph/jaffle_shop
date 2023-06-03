@@ -1,11 +1,16 @@
-{% set last_year_start = '2021-01-01' %}
-{% set last_year_end = '2021-12-31' %}
+{{
+    config(
+        materialized='table'
+    )
+}}
 
 with last_year_sales as (
     select
         sum(amount) as total_sales_last_year
     from {{ ref('orders') }}
-    where order_date between '{{ last_year_start }}' and '{{ last_year_end }}'
+    where
+        order_date >= date_trunc('year', current_date - interval '1 year')
+        and order_date < date_trunc('year', current_date)
 )
 
 select * from last_year_sales
