@@ -1,12 +1,13 @@
-version: 2
-
 sources:
-  - name: jaffle_shop_raw
-    database: analytics
-    schema: public_test
-
-
-    tables:
-      - name: raw_orders
-      - name: raw_customers
-      - name: raw_payments
+- database: TEST_DB
+  name: jaffle_shop_raw
+  schema: jaffle_shop
+  tables:
+  - name: customers
+  - name: orders
+- database: TEST_DB
+  name: stripe_raw
+  schema: stripe
+  tables:
+  - name: payment
+version: 2

@@ -1,6 +1,6 @@
 with source as (
 
-    select * from {{ source('jaffle_shop_raw','raw_orders') }}
+    select * from {{ source('jaffle_shop_raw','orders') }}
 ),
 
 
