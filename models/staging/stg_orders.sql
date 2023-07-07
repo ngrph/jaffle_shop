@@ -1,19 +1,17 @@
-with source as (
 
-    select * from {{ source('jaffle_shop_raw','orders') }}
-),
+    with source as (
+        select * from {{source('jaffle_shop_raw', 'orders')}}
+    ),
 
-
-renamed as (
-
-    select
-        id as order_id,
-        user_id as customer_id,
+    renamed as (
+        select
+            id,
+        user_id,
         order_date,
-        status
+        status,
+        _etl_loaded_at
+        from source
+    )
 
-    from source
-
-)
-
-select * from renamed
+    select * from renamed
+    
