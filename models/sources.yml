@@ -1,11 +1,11 @@
 sources:
-- database: TEST_DB
+- database: RAW_JAFFLE
   name: jaffle_shop_raw
-  schema: jaffle_shop
+  schema: jaffle_raw_schema
   tables:
   - name: customers
   - name: orders
-- database: TEST_DB
+- database: RAW_JAFFLE
   name: stripe_raw
   schema: stripe
   tables:
